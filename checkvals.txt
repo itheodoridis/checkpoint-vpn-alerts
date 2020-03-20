@@ -1,0 +1,44 @@
+from netmiko import ConnectHandler, ssh_exception
+from paramiko.ssh_exception import SSHException
+from getpass import getpass
+import subprocess
+import sys
+
+#user = input('username:')
+#passwd = getpass()
+
+user = 'cpmonitor'
+passwd = 'M0nitor'
+hostname = '10.132.1.5'
+
+mkfwext1 = {
+    'device_type': 'checkpoint_gaia',
+    'ip': hostname,
+    'username': user,
+    'password': passwd,
+}
+
+try:
+    net_connect = ConnectHandler(**mkfwext1)
+except SSHException as e:#replace with netmiko exception
+    print("Can't connect to device {},\n{}".format(hostname, e))
+    sys.exit(1)
+except ssh_exception.NetMikoTimeoutException as e:
+    print("Timeout for device {},\n{}".format(hostname, e))
+    sys.exit(1)
+except ssh_exception.NetMikoAuthenticationException as e:
+    print("Invalid Credentials for device {},\n{}".format(hostname, e))
+    sys.exit(1)
+
+output = net_connect.send_command("fw tab -t userc_users -s")
+lines = output.split('\n')
+for line in lines:
+    if 'NAME' in line:
+        continue
+    vars = line.split()
+    vals = vars[3]
+    peak = vars[4]
+    print ("Current Remote Users: ",vals)
+    print ("Peak number of users:", peak)
+
+net_connect.disconnect()
