@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 """
 This plugin can get the number of vpn users from a checkpoint gaia gateway.
