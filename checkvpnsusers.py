@@ -12,8 +12,8 @@ import os
 timestr = time.strftime("%Y%m%d")
 filename = "vpnusers_"+timestr+".csv"
 
-user = 'cpmonitor'
-passwd = 'M0nitor'
+user = 'username'
+passwd = 'password'
 hostname = 'gwaddress'
 
 mkfwext1 = {
