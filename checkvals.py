@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+the part for sending an email comes from this: https://serverfault.com/questions/950570/send-e-mail-using-exchange-2016-using-a-python-script
+and this: https://stackoverflow.com/questions/8856117/how-to-send-email-to-multiple-recipients-using-python-smtplib
+"""
+
 from netmiko import ConnectHandler, ssh_exception
 from paramiko.ssh_exception import SSHException
 from getpass import getpass
