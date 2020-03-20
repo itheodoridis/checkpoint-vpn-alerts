@@ -9,15 +9,12 @@ import time
 import csv
 import os
 
-#user = input('username:')
-#passwd = getpass()
-
 timestr = time.strftime("%Y%m%d")
 filename = "vpnusers_"+timestr+".csv"
 
 user = 'cpmonitor'
 passwd = 'M0nitor'
-hostname = '10.132.1.5'
+hostname = 'gwaddress'
 
 mkfwext1 = {
     'device_type': 'checkpoint_gaia',
@@ -53,16 +50,16 @@ net_connect.disconnect()
 #timestr = time.strftime("%Y%m%d_%H%M")
 timestr = str(time.strftime("%H:%M %d/%m/%Y"))
 
-recipients = "itheodoridis@bankofgreece.gr,kdardoufa@bankofgreece.gr,itheodori@gmail.com,hmavroidis@bankofgreece.gr,noc@bankofgreece.gr"
+recipients = "user1@address,user2@address,user3@address"
 TO = recipients.split(',')
 SUBJECT = 'VPN users report'
 TEXT = "Date and Time: {}\nCurrent Remote Users: {}\nPeak Number of users: {}".format(timestr, vals, peak)
 
 # exchange Sign In
-exchange_sender = 'nwmonitor@bankofgreece.gr'
-exchange_passwd = 'Q;Q6d!-o7-;Xp{;g[)eh'
+exchange_sender = 'echangeuser@address'
+exchange_passwd = 'exchangepassword'
 
-server = smtplib.SMTP('smtp-mk.bankofgreece.gr', 25)
+server = smtplib.SMTP('smtps-server', 25)
 server.ehlo()
 server.starttls()
 server.login(exchange_sender, exchange_passwd)
