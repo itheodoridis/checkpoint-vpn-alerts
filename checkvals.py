@@ -7,9 +7,9 @@ import sys
 import smtplib
 import time
 
+hostname = input ('ip address:')
 user = input('username:')
 passwd = getpass()
-hostname = input ('ip address:')
 
 mkfwext1 = {
     'device_type': 'checkpoint_gaia',
