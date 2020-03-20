@@ -52,7 +52,7 @@ writer.save()
 
 recipients = "user1@address, user2@address, user3@address"
 subject = 'VPN users graph report for {}'.format(sheet_date)
-bodytext= "This is the report in Excel Graph format for {} for VPN users and peak values per time of day. \n\nWith Compliments of the Network Section of the Bank of Greece".format(sheet_date)
+bodytext= "This is the report in Excel Graph format for {} for VPN users and peak values per time of day. \n\nWith Compliments of the Network Section.".format(sheet_date)
 
 # exchange Sign In
 exchange_sender = 'user@address'
