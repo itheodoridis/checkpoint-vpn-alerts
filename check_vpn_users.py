@@ -7,6 +7,17 @@ If the number is lower than the warning level number, an OK status is returned
 If the number is higher than warning but lower than critical, a WARNING status is returned.
 If the number is higher than critical, a CRITICAL status is returned.
 In any case, the number of users is also returned.
+execute as follows: ./check_vpn_users.py -H <hostname or ip> -u <user> -p <password> 
+-w <no of users for warning level> -c <no of users for critical level>
+you need to create a custom command like this:
+####################################
+# checkpoint check vpn users command
+####################################
+define command{
+        command_name    check_vpn_users
+        command_line    $USER1$/check_vpn_users.py -H $HOSTADDRESS$ -u $ARG1$ -p $ARG2$ -w $ARG3$ -c $ARG4$
+}
+and then a nagios service
 """
 
 from netmiko import ConnectHandler, ssh_exception
